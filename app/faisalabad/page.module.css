@@ -1,0 +1,84 @@
+.container {
+    padding-top: 8rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Header Group: Icon + Title + Subtitle */
+.headerGroup {
+    margin-bottom: 2rem;
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    color: #333;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    /* Thin look */
+    color: #333;
+    margin: 0;
+    font-family: var(--font-source);
+    /* Or Julius if preferred for titles */
+}
+
+.subtitle {
+    color: #999;
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-left: 0.5rem;
+    padding-top: 0.5rem;
+    /* Align baseline */
+    text-transform: uppercase;
+}
+
+/* Image */
+.image {
+    width: 100%;
+    margin-bottom: 3rem;
+    overflow: hidden;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+/* Content Section */
+.content {
+    max-width: 800px;
+    /* Slightly narrower text column */
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #333;
+    /* Dark grey */
+    margin-bottom: 1.5rem;
+    font-family: var(--font-source);
+}
+
+.content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #444;
+    /* Readable dark grey */
+    font-family: var(--font-source);
+}

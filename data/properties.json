@@ -1,0 +1,85 @@
+[
+  {
+    "id": "1",
+    "title": "Modern Villa in Faisalabad",
+    "price": "250000000",
+    "status": "FOR SALE",
+    "address": "123 Canal Road",
+    "city": "Faisalabad",
+    "community": "Canal View",
+    "sizeValue": "1",
+    "sizeUnit": "Kanal",
+    "featured": false,
+    "description": "Experience the epitome of luxury living in this stunning property located in Canal View, Faisalabad. Designed for those who appreciate the finer things in life, this residence offers unparalleled comfort, sophisticated design, and premium amenities. Whether you are looking for a serene retreat or a space to entertain, this home delivers on every front.",
+    "images": [
+      "https://placehold.co/800x600/101010/FFF?text=Luxury+Villa+Exterior",
+      "https://placehold.co/800x600/202020/FFF?text=Luxury+Villa+Interior",
+      "https://placehold.co/800x600/303030/FFF?text=Luxury+Villa+Pool"
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Downtown Penthouse",
+    "price": "125000000",
+    "status": "SOLD",
+    "address": "45 Kohinoor City",
+    "city": "Faisalabad",
+    "community": "Kohinoor City",
+    "sizeValue": "10",
+    "sizeUnit": "Marla",
+    "featured": true,
+    "description": "Experience the epitome of luxury living in this stunning property located in Kohinoor City, Faisalabad. Designed for those who appreciate the finer things in life, this residence offers unparalleled comfort, sophisticated design, and premium amenities. Whether you are looking for a serene retreat or a space to entertain, this home delivers on every front.",
+    "images": [
+      "https://placehold.co/800x600/202020/FFF?text=Penthouse+View",
+      "https://placehold.co/800x600/333333/FFF?text=Penthouse+Living+Room"
+    ]
+  },
+  {
+    "title": "zx",
+    "price": "1000",
+    "status": "FOR SALE",
+    "address": "zx",
+    "city": "Faisalabad",
+    "community": "Canal View",
+    "sizeValue": "300",
+    "sizeUnit": "Marla",
+    "featured": true,
+    "description": "Experience the epitome of luxury living in this stunning property located in Canal View, Faisalabad. Designed for those who appreciate the finer things in life, this residence offers unparalleled comfort, sophisticated design, and premium amenities. Whether you are looking for a serene retreat or a space to entertain, this home delivers on every front.",
+    "images": [
+      "https://placehold.co/800x600/101010/FFF?text=New+Listing"
+    ],
+    "id": "1766334826165"
+  },
+  {
+    "title": "Houe in wapda city",
+    "price": "30000000",
+    "status": "FOR SALE",
+    "address": "Wapda city",
+    "city": "Faisalabad",
+    "community": "Wapda City",
+    "sizeValue": "10",
+    "sizeUnit": "Marla",
+    "featured": false,
+    "description": "Experience the epitome of luxury living in this stunning property located in Wapda City, Faisalabad. Designed for those who appreciate the finer things in life, this residence offers unparalleled comfort, sophisticated design, and premium amenities. Whether you are looking for a serene retreat or a space to entertain, this home delivers on every front.",
+    "images": [
+      "https://images.olx.com.pk/thumbnails/587583966-800x600.webp"
+    ],
+    "id": "1766345130784"
+  },
+  {
+    "title": "House no 398",
+    "price": "100000000",
+    "status": "RENTAL",
+    "address": "sitara sapna city, daewoo road",
+    "city": "Faisalabad",
+    "community": "Sitara Sapna city ",
+    "sizeValue": "15",
+    "sizeUnit": "Marla",
+    "featured": false,
+    "description": "Experience the epitome of luxury living in this stunning property located in Sitara Sapna city, Faisalabad. Designed for those who appreciate the finer things in life, this residence offers unparalleled comfort, sophisticated design, and premium amenities. Whether you are looking for a serene retreat or a space to entertain, this home delivers on every front.",
+    "images": [
+      "https://placehold.co/800x600/101010/FFF?text=New+Listing"
+    ],
+    "id": "1766423125914"
+  }
+]

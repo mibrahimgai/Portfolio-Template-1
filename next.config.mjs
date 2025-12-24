@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  images: {
+    unoptimized: true, // This helps your pictures show up correctly
+  },
 };
-
 export default nextConfig;

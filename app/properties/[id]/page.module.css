@@ -1,0 +1,160 @@
+.container {
+    padding-bottom: 6rem;
+    background: #f6f8ff;
+    /* Warm Ivory as requested */
+    color: #111;
+}
+
+.heroImageContainer {
+    width: 100%;
+    height: 100vh;
+    /* Full viewport height */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+/* Center the content */
+.contentWrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.detailsHeader {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.detailsHeader h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: #111;
+}
+
+.detailsHeader p {
+    font-size: 1.1rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Strip of details (Price, Beds, Etc) */
+.detailsStrip {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.detailItem {
+    text-align: center;
+}
+
+.detailItem label {
+    display: block;
+    font-size: 0.75rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.detailItem span {
+    font-size: 1.25rem;
+    font-family: var(--font-julius);
+    color: #000;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: #333;
+    text-align: center;
+    margin-bottom: 6rem;
+    font-weight: 300;
+}
+
+.gallery {
+    margin-top: 6rem;
+}
+
+.gallery h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    color: #111;
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 Column simplified luxury grid */
+    gap: 2rem;
+}
+
+.galleryImage {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    filter: none;
+    transition: all 0.5s ease;
+}
+
+.galleryImage:hover {
+    transform: scale(1.01);
+}
+
+/* Floating or Fixed Contact Action - Optional, keeping it simple for now inline */
+.contactSection {
+    text-align: center;
+    margin-top: 6rem;
+    padding-top: 4rem;
+    border-top: 1px solid #ddd;
+}
+
+.contactButton {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: #111;
+    color: #fff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+.contactButton:hover {
+    background: #333;
+}
+
+@media (max-width: 900px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .galleryGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .detailsStrip {
+        gap: 1.5rem;
+    }
+
+    .heroImageContainer {
+        height: 60vh;
+    }
+}

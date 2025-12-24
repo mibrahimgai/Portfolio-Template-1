@@ -1,0 +1,121 @@
+/* Main Wrapper */
+.mainWrapper {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.heroSection {
+    background: url('/clock-tower-v2.png') no-repeat center center/cover;
+    height: 60vh;
+    /* Adjust as needed */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Overlay for readability */
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 1rem;
+}
+
+/* Centered Filters */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    /* Remove gap for merged look or keep small */
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 4px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.filterGroup {
+    flex: 1;
+    position: relative;
+    border-right: 1px solid #eee;
+    padding: 0 0.5rem;
+    min-width: 150px;
+}
+
+.filterGroup:last-child {
+    border-right: none;
+}
+
+/* Inputs and Selects within the search bar */
+.select,
+.input {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    background: transparent;
+    color: #333;
+    font-family: var(--font-source);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.select:focus,
+.input:focus {
+    outline: none;
+}
+
+/* Listing Section */
+.listingSection {
+    background-color: #f8f6f3;
+    /* Warm Ivory */
+    padding: 4rem 0;
+    min-height: 50vh;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.noResults {
+    text-align: center;
+    padding: 4rem;
+    color: var(--slate-600);
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        gap: 0.5rem;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .filterGroup {
+        width: 100%;
+        background: #fff;
+        border-right: none;
+        border-radius: 4px;
+    }
+
+    .heroSection {
+        height: 50vh;
+        margin-top: 5rem;
+        /* Account for fixed header */
+    }
+}
