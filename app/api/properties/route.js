@@ -1,77 +1,29 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-import { NextResponse } from 'next/server';
+import clientPromise from "@/lib/mongodb";
+import { NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';
-
-const dataFilePath = path.join(process.cwd(), 'data', 'properties.json');
-
-async function getProperties() {
-    const data = await fs.readFile(dataFilePath, 'utf8');
-    return JSON.parse(data);
-}
-
-async function saveProperties(properties) {
-    await fs.writeFile(dataFilePath, JSON.stringify(properties, null, 2));
-}
-
+// This function GETS the properties from the Cloud to show on your site
 export async function GET() {
     try {
-        const properties = await getProperties();
+        const client = await clientPromise;
+        const db = client.db("realestate_db"); // This is the name of your database
+        const properties = await db.collection("properties").find({}).toArray();
         return NextResponse.json(properties);
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to load properties' }, { status: 500 });
+    } catch (e) {
+        return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
     }
 }
 
+// This function SAVES a new property from your Admin Page to the Cloud
 export async function POST(request) {
     try {
-        const newProperty = await request.json();
-        const properties = await getProperties();
+        const body = await request.json();
+        const client = await clientPromise;
+        const db = client.db("realestate_db");
 
-        // Simple ID generation
-        newProperty.id = Date.now().toString();
+        const result = await db.collection("properties").insertOne(body);
 
-        properties.push(newProperty);
-        await saveProperties(properties);
-
-        return NextResponse.json(newProperty);
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to add property' }, { status: 500 });
-    }
-}
-
-export async function DELETE(request) {
-    try {
-        const { searchParams } = new URL(request.url);
-        const id = searchParams.get('id');
-
-        if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
-
-        let properties = await getProperties();
-        properties = properties.filter(p => p.id !== id);
-
-        await saveProperties(properties);
-
-        return NextResponse.json({ success: true });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to delete property' }, { status: 500 });
-    }
-}
-
-export async function PUT(request) {
-    try {
-        const updatedProperty = await request.json();
-        let properties = await getProperties();
-
-        const index = properties.findIndex(p => p.id === updatedProperty.id);
-        if (index === -1) return NextResponse.json({ error: 'Property not found' }, { status: 404 });
-
-        properties[index] = updatedProperty;
-        await saveProperties(properties);
-
-        return NextResponse.json(updatedProperty);
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to update property' }, { status: 500 });
+        return NextResponse.json({ message: "Property added!", id: result.insertedId });
+    } catch (e) {
+        return NextResponse.json({ error: "Failed to save" }, { status: 500 });
     }
 }
