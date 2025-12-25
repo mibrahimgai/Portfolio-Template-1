@@ -1,160 +1,272 @@
+/* Main Container */
 .container {
-    padding-bottom: 6rem;
-    background: #f6f8ff;
-    /* Warm Ivory as requested */
-    color: #111;
+    padding-bottom: 8rem;
+    background: #fff;
+    /* Clean white background */
+    color: #222;
+    min-height: 100vh;
 }
 
-.heroImageContainer {
+/* Hero Section */
+.heroSection {
     width: 100%;
-    height: 100vh;
-    /* Full viewport height */
+    height: 85vh;
+    /* Very tall hero */
     position: relative;
     overflow: hidden;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
 
-/* Center the content */
+/* Content Wrapper */
 .contentWrapper {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-.detailsHeader {
+/* Property Header */
+.propertyHeader {
     text-align: center;
     margin-bottom: 4rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4rem;
 }
 
-.detailsHeader h1 {
+.title {
     font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
+    font-weight: 400;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
-    text-transform: uppercase;
     color: #111;
+    font-family: serif;
+    /* Fallback to standard serif if variable not set */
 }
 
-.detailsHeader p {
+.locationInfo {
     font-size: 1.1rem;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* Strip of details (Price, Beds, Etc) */
-.detailsStrip {
+    color: #666;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: center;
-    gap: 3rem;
-    padding: 2rem 0;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 4rem;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
 }
 
-.detailItem {
-    text-align: center;
-}
-
-.detailItem label {
-    display: block;
-    font-size: 0.75rem;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-}
-
-.detailItem span {
-    font-size: 1.25rem;
-    font-family: var(--font-julius);
-    color: #000;
-}
-
-.description {
-    font-size: 1.1rem;
-    line-height: 2;
-    color: #333;
-    text-align: center;
-    margin-bottom: 6rem;
+.divider {
+    color: #ccc;
     font-weight: 300;
 }
 
-.gallery {
-    margin-top: 6rem;
-}
-
-.gallery h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    margin-bottom: 3rem;
+.priceTag {
+    font-size: 2.2rem;
     font-weight: 300;
     color: #111;
+    margin-bottom: 1.5rem;
+}
+
+.currency {
+    font-size: 1rem;
+    vertical-align: top;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+    color: #555;
+    font-weight: 400;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #111;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #111;
+}
+
+/* Specs Grid */
+.specsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 6rem;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 2rem 0;
+}
+
+.specItem {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.specLabel {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888;
+}
+
+.specValue {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #111;
+}
+
+/* Description Section */
+.descriptionSection {
+    margin-bottom: 8rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 3rem;
+    color: #111;
+    text-align: center;
+}
+
+.descriptionText {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #444;
+    font-weight: 300;
+}
+
+/* Gallery Section */
+.gallerySection {
+    margin-bottom: 8rem;
 }
 
 .galleryGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* 2 Column simplified luxury grid */
-    gap: 2rem;
+    /* 2 column luxury layout */
+    gap: 1.5rem;
 }
 
 .galleryImage {
     width: 100%;
-    height: 500px;
+    height: 600px;
     object-fit: cover;
-    filter: none;
-    transition: all 0.5s ease;
+    filter: brightness(0.95);
+    transition: filter 0.3s ease;
 }
 
 .galleryImage:hover {
-    transform: scale(1.01);
+    filter: brightness(1.05);
 }
 
-/* Floating or Fixed Contact Action - Optional, keeping it simple for now inline */
+/* Map Section */
+.mapSection {
+    margin-bottom: 8rem;
+}
+
+.mapFrame {
+    width: 100%;
+    height: 450px;
+    background: #f5f5f5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mapPlaceholder {
+    color: #888;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* Contact Section */
 .contactSection {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0;
+    background: #f9f9f9;
+}
+
+.contactCard {
     text-align: center;
-    margin-top: 6rem;
-    padding-top: 4rem;
-    border-top: 1px solid #ddd;
+}
+
+.contactCard h3 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #111;
+}
+
+.contactCard p {
+    color: #666;
+    margin-bottom: 2.5rem;
 }
 
 .contactButton {
     display: inline-block;
-    padding: 1.2rem 3rem;
+    padding: 1.2rem 3.5rem;
     background: #111;
     color: #fff;
     font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    letter-spacing: 0.15em;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .contactButton:hover {
     background: #333;
+    transform: translateY(-2px);
 }
 
+/* Not Found State */
+.notFound {
+    padding: 15rem 2rem;
+    text-align: center;
+}
+
+.notFound h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.backLink {
+    text-decoration: underline;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
 @media (max-width: 900px) {
-    .header h1 {
-        font-size: 2rem;
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .heroSection {
+        height: 60vh;
+    }
+
+    .specsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
     }
 
     .galleryGrid {
         grid-template-columns: 1fr;
     }
 
-    .detailsStrip {
-        gap: 1.5rem;
-    }
-
-    .heroImageContainer {
-        height: 60vh;
+    .galleryImage {
+        height: 400px;
     }
 }

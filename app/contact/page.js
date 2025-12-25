@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
-export default function Contact() {
+function ContactForm() {
+    const searchParams = useSearchParams();
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -17,6 +19,16 @@ export default function Contact() {
     });
     const [status, setStatus] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        const property = searchParams.get('property');
+        if (property) {
+            setFormData(prev => ({
+                ...prev,
+                message: `I am interested in viewing the property: ${property}. Please contact me to schedule a time.`
+            }));
+        }
+    }, [searchParams]);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -204,5 +216,13 @@ export default function Contact() {
 
             <Footer />
         </div>
+    );
+}
+
+export default function Contact() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ContactForm />
+        </Suspense>
     );
 }
