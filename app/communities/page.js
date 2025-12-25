@@ -1,18 +1,22 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { promises as fs } from 'fs';
-import path from 'path';
+import clientPromise from "@/lib/mongodb";
 import styles from './page.module.css';
 
 export const dynamic = 'force-dynamic';
 
 async function getCommunities() {
-    const filePath = path.join(process.cwd(), 'data', 'communities.json');
     try {
-        const jsonData = await fs.readFile(filePath, 'utf8');
-        return JSON.parse(jsonData);
+        const client = await clientPromise;
+        const db = client.db("realestate_db");
+        const communities = await db.collection("communities").find({}).toArray();
+        return communities.map(c => ({
+            ...c,
+            id: c._id.toString()
+        }));
     } catch (e) {
+        console.error("Failed to fetch communities", e);
         return [];
     }
 }

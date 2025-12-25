@@ -1,41 +1,46 @@
-export const dynamic = 'force-static';
-import { promises as fs } from 'fs';
-import path from 'path';
-import { NextResponse } from 'next/server';
+import clientPromise from "@/lib/mongodb";
+import { NextResponse } from "next/server";
+import { ObjectId } from "mongodb";
 
-const dataFilePath = path.join(process.cwd(), 'data', 'communities.json');
-
-async function getCommunities() {
-    const data = await fs.readFile(dataFilePath, 'utf8');
-    return JSON.parse(data);
-}
-
-async function saveCommunities(communities) {
-    await fs.writeFile(dataFilePath, JSON.stringify(communities, null, 2));
-}
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
     try {
-        const communities = await getCommunities();
-        return NextResponse.json(communities);
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to load communities' }, { status: 500 });
+        const client = await clientPromise;
+        const db = client.db("realestate_db");
+        const communities = await db.collection("communities").find({}).toArray();
+
+        const mappedCommunities = communities.map(c => ({
+            ...c,
+            id: c._id.toString()
+        }));
+
+        return NextResponse.json(mappedCommunities);
+    } catch (e) {
+        console.error(e);
+        return NextResponse.json({ error: "Failed to fetch communities" }, { status: 500 });
     }
 }
 
 export async function POST(request) {
     try {
-        const newCommunity = await request.json();
-        const communities = await getCommunities();
+        const body = await request.json();
 
-        newCommunity.id = Date.now().toString();
+        // Remove id if it was sent by client (we rely on MongoDB _id)
+        const { id, ...communityData } = body;
 
-        communities.push(newCommunity);
-        await saveCommunities(communities);
+        const client = await clientPromise;
+        const db = client.db("realestate_db");
 
-        return NextResponse.json(newCommunity);
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to add community' }, { status: 500 });
+        const result = await db.collection("communities").insertOne(communityData);
+
+        return NextResponse.json({
+            ...communityData,
+            id: result.insertedId.toString()
+        });
+    } catch (e) {
+        console.error(e);
+        return NextResponse.json({ error: "Failed to add community" }, { status: 500 });
     }
 }
 
@@ -44,15 +49,18 @@ export async function DELETE(request) {
         const { searchParams } = new URL(request.url);
         const id = searchParams.get('id');
 
-        if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+        if (!id) {
+            return NextResponse.json({ error: "ID required" }, { status: 400 });
+        }
 
-        let communities = await getCommunities();
-        communities = communities.filter(c => c.id !== id);
+        const client = await clientPromise;
+        const db = client.db("realestate_db");
 
-        await saveCommunities(communities);
+        await db.collection("communities").deleteOne({ _id: new ObjectId(id) });
 
         return NextResponse.json({ success: true });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to delete community' }, { status: 500 });
+    } catch (e) {
+        console.error(e);
+        return NextResponse.json({ error: "Failed to delete community" }, { status: 500 });
     }
 }
