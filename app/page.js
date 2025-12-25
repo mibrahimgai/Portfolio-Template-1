@@ -71,7 +71,7 @@ export default async function Home() {
             <div className={styles.about}>
               <div className={styles.aboutImage}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/ghulam-abbas-imran.jpg" alt="Ghulam Abbas Imran" />
+                <img src="/about-placeholder.png" alt="Ghulam Abbas Imran" />
               </div>
               <div className={styles.aboutContent}>
                 <h2>GHULAM ABBAS IMRAN</h2>

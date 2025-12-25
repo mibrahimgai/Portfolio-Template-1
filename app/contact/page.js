@@ -95,10 +95,10 @@ function ContactForm() {
                     <h2 className={styles.profileName}>GHULAM ABBAS IMRAN</h2>
                     <div className={styles.profileInfo}>
                         <p>
-                            <a href="tel:+9203008667256">+92 03008667256</a>
+                            <a href="tel:0000000000">0000000000</a>
                         </p>
                         <p>
-                            <a href="mailto:gaimran414@gmail.com">gaimran414@gmail.com</a>
+                            <a href="mailto:youremail@whatever.com">youremail@whatever.com</a>
                         </p>
 
                     </div>

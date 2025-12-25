@@ -16,7 +16,7 @@ export async function POST(req) {
 
             const mailOptions = {
                 from: email, // Sender address (client's email) - Note: Gmail might override this to be the authenticated user
-                to: 'gaimran414@gmail.com',
+                to: 'youremail@whatever.com',
                 replyTo: email,
                 subject: `New Contact Form Message from ${firstName} ${lastName}`,
                 text: `
@@ -37,7 +37,7 @@ ${message}
         } else {
             // Development fallback when no credentials are provided
             console.log('--- MOCK EMAIL SEND ---');
-            console.log(`To: gaimran414@gmail.com`);
+            console.log(`To: youremail@whatever.com`);
             console.log(`From: ${firstName} ${lastName} <${email}>`);
             console.log(`Phone: ${phone}`);
             console.log(`Company: ${company}`);
