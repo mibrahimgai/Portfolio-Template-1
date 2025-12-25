@@ -3,16 +3,23 @@ import styles from './page.module.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PropertyCard from '@/components/PropertyCard';
-import { promises as fs } from 'fs';
-import path from 'path';
 import ScrollReveal from '@/components/ScrollReveal';
+
+import clientPromise from '@/lib/mongodb';
 
 export const dynamic = 'force-dynamic';
 
 async function getProperties() {
-  const filePath = path.join(process.cwd(), 'data', 'properties.json');
-  const jsonData = await fs.readFile(filePath, 'utf8');
-  return JSON.parse(jsonData);
+  try {
+    const client = await clientPromise;
+    const db = client.db("realestate_db");
+    const properties = await db.collection("properties").find({}).toArray();
+    // Serialize ObjectId
+    return properties.map(p => ({ ...p, id: p._id.toString(), _id: p._id.toString() }));
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
 }
 
 export default async function Home() {

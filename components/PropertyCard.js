@@ -31,7 +31,10 @@ export default function PropertyCard({ property, index = 0 }) {
             <div className={styles.details}>
                 <h3 className={styles.address}>{property.address}</h3>
                 <span className={styles.city}>{property.city}</span>
-                <span className={styles.price}>PKR {Number(property.price).toLocaleString()}</span>
+                <span className={styles.price}>
+                    PKR {Number(property.price).toLocaleString()}
+                    {property.status === 'RENTAL' && ' /mo'}
+                </span>
             </div>
         </motion.div>
     );
